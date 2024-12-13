@@ -89,7 +89,6 @@ async def on_message(message: IncomingMessage, channel):
         try:
             data = json.loads(message.body)
             logger.debug(f"Сообщение раскодировано: {data}")
-            # Ожидаемый формат: [id_новости, текст_новости, компания]
             if len(data) != 3:
                 logger.error(f"Некорректный формат сообщения: {data}")
                 return
@@ -124,14 +123,12 @@ async def main():
     await channel.set_qos(prefetch_count=1)
     input_queue = await channel.get_queue(INPUT_QUEUE_NAME)
 
-    # Начинаем слушать входящую очередь
     logger.info(f"Начинаем прослушивание очереди {INPUT_QUEUE_NAME}...")
     await input_queue.consume(lambda msg: on_message(msg, channel))
 
 
 @app.on_event("startup")
 async def startup_event():
-    # Запускаем main при старте приложения
     logger.info("Запуск подписки на очередь при старте приложения...")
     await main()
 
