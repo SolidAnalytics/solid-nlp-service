@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+openai
+aio-pika
+python-dotenv
