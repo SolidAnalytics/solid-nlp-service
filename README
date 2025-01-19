@@ -1,7 +1,0 @@
-Запуск
-
-dramatiq main
-docker compose up -d
-
-для отправки запроса запустить 
-send_q.py
