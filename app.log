@@ -1,0 +1,13 @@
+2024-12-28 23:13:18,200 - INFO - Sending post task.
+2024-12-28 23:13:18,200 - INFO - Sending task for post ID: 12.
+2024-12-28 23:13:18,202 - INFO - Pika version 1.3.2 connecting to ('127.0.0.1', 5672)
+2024-12-28 23:13:18,202 - INFO - Socket connected: <socket.socket fd=916, family=2, type=1, proto=6, laddr=('127.0.0.1', 51702), raddr=('127.0.0.1', 5672)>
+2024-12-28 23:13:18,203 - INFO - Streaming transport linked up: (<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x0000027C5335A1E0>, _StreamingProtocolShim: <SelectConnection PROTOCOL transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x0000027C5335A1E0> params=<ConnectionParameters host=127.0.0.1 port=5672 virtual_host=/ ssl=False>>).
+2024-12-28 23:13:18,206 - INFO - AMQPConnector - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x0000027C5335A1E0> params=<ConnectionParameters host=127.0.0.1 port=5672 virtual_host=/ ssl=False>>
+2024-12-28 23:13:18,206 - INFO - AMQPConnectionWorkflow - reporting success: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x0000027C5335A1E0> params=<ConnectionParameters host=127.0.0.1 port=5672 virtual_host=/ ssl=False>>
+2024-12-28 23:13:18,206 - INFO - Connection workflow succeeded: <SelectConnection OPEN transport=<pika.adapters.utils.io_services_utils._AsyncPlaintextTransport object at 0x0000027C5335A1E0> params=<ConnectionParameters host=127.0.0.1 port=5672 virtual_host=/ ssl=False>>
+2024-12-28 23:13:18,207 - INFO - Created channel=1
+2024-12-28 23:13:18,211 - INFO - Task sent for post ID: 12.
+2024-12-28 23:13:18,211 - INFO - Querying GPT-4 with prompt.
+2024-12-28 23:13:19,010 - INFO - Successfully queried GPT-4.
+2024-12-28 23:13:19,010 - INFO - Received response from GPT-4.
