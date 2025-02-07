@@ -1,0 +1,17 @@
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_MODEL_NAME = os.getenv("OPENAI_MODEL_NAME")
+
+RESULT_RABBIT_URL = os.getenv("RESULT_RABBIT_URL")
+RESULT_RABBIT_QUEUE = os.getenv("RESULT_RABBIT_QUEUE")
+RESULT_RABBIT_ACTOR = os.getenv("RESULT_RABBIT_ACTOR")
+
+ERROR_RABBIT_URL = os.getenv("ERROR_RABBIT_URL")
+ERROR_RABBIT_QUEUE = os.getenv("ERROR_RABBIT_QUEUE")
+ERROR_RABBIT_ACTOR = os.getenv("ERROR_RABBIT_ACTOR")
