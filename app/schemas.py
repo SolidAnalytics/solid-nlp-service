@@ -15,3 +15,4 @@ class LabelingResponse(BaseModel):
     entity: str
     genre: str
     sentiment: NEWS_SENTIMENTS
+    is_entity_presented: bool

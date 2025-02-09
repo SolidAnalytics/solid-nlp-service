@@ -27,5 +27,6 @@ class OpenAILabelingWorker(BaseLabelingWorker):
             global_post_id=data.global_post_id,
             entity=data.entity,
             genre=labeled_news.predicted_genre,
-            sentiment=labeled_news.predicted_sentiment
+            sentiment=labeled_news.predicted_sentiment,
+            is_entity_presented=labeled_news.is_entity_presented
         )

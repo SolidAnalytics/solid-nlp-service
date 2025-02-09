@@ -36,19 +36,36 @@ async def run_task(input_data: dict[str, Any]) -> None:
 
 
 if __name__ == "__main__":
-    res = run_task.send({
+    genre_list = ['статья', 'обзор', 'рекомендация', 'отзыв', 'новость']
+    run_task.send({
         'post_data': {
             'global_post_id': 1,
             'post_text': 'Брал недавно кредит в Сбербанке, очень доволен, все было очень быстро и просто',
             'entity': 'Сбербанк',
-            'genre_list': ['статья', 'обзор', 'рекомендация', 'отзыв']
+            'genre_list': genre_list
         }
     })
-    res = run_task.send({
+    run_task.send({
         'post_data': {
             'global_post_id': 2,
             'post_text': 'Заходил в офис сбера, хотел оформить карту, но там было очень долго, сотрудники были не очень вежливые и не подошли даже в течение 20 минут!!!',
             'entity': 'Сбербанк',
-            'genre_list': ['статья', 'обзор', 'рекомендация', 'отзыв']
+            'genre_list': genre_list
+        }
+    })
+    run_task.send({
+        'post_data': {
+            'global_post_id': 3,
+            'post_text': 'Заходил в офис сбера, хотел оформить карту, но там было очень долго, сотрудники были не очень вежливые и не подошли даже в течение 20 минут!!!',
+            'entity': 'Альфа-банк',
+            'genre_list': genre_list
+        }
+    })
+    run_task.send({
+        'post_data': {
+            'global_post_id': 4,
+            'post_text': 'Сбербанк выпустил новую карту, которая позволяет пользоваться всеми услугами банка бесплатно. Об этом рассказал глава банка Герман Греф.',
+            'entity': 'Сбербанк',
+            'genre_list': genre_list
         }
     })

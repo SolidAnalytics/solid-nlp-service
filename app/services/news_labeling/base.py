@@ -18,6 +18,7 @@ class LabeledNewsData(BaseModel):
     company_name: str
     predicted_genre: str
     predicted_sentiment: NEWS_SENTIMENTS
+    is_entity_presented: bool
 
 
 class LabelingService:
