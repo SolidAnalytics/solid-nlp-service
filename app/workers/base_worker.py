@@ -22,7 +22,7 @@ class BaseLabelingWorker:
     async def process(self, data: LabelingRequest) -> LabelingResponse:
         pass
 
-    async def preprocess_request(self, input_data: dict[str, Any]) -> None:
+    async def process_request(self, input_data: dict[str, Any]) -> None:
         input_data = copy.deepcopy(input_data)
         try:
             data = input_data["post_data"]

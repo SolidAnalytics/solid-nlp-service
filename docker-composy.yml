@@ -1,0 +1,42 @@
+services:
+  rabbitmq:
+    image: rabbitmq:4.0-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+      - rabbitmq_logs:/var/log/rabbitmq
+    networks:
+      - local_network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "rabbitmqctl", "status"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  telegram-parser:
+    build:
+      context: .
+    volumes:
+      - ./.env:/app/.env
+    networks:
+      - local_network
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+
+volumes:
+  rabbitmq_data:
+    driver: local
+  rabbitmq_logs:
+    driver: local
+
+networks:
+  local_network:

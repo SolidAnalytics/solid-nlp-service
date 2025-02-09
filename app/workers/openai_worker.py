@@ -4,15 +4,18 @@ from app.services.news_labeling import OpenAILabelingService, NewsData
 import app.config as config
 
 
-class OpenAIWorker(BaseLabelingWorker):
+class OpenAILabelingWorker(BaseLabelingWorker):
     service_name = "openai_news_labeling_worker"
     queue_name = "labeling_worker_queue"
     actor_name = "labeling_worker"
 
-    def __init__(self):
+    def __init__(self, model_name: str, openai_api_key: str):
+        super().__init__()
+        self.model_name = model_name
+        self.openai_api_key = openai_api_key
         self.labeling_service = OpenAILabelingService(
-            model_name=config.OPENAI_MODEL_NAME, 
-            openai_api_key=config.OPENAI_API_KEY
+            model_name=model_name, 
+            openai_api_key=openai_api_key
         )
 
     async def process(self, data: LabelingRequest) -> LabelingResponse:
