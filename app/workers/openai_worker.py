@@ -1,7 +1,6 @@
 from app.workers.base_worker import BaseLabelingWorker
 from app.schemas import LabelingRequest, LabelingResponse
 from app.services.news_labeling import OpenAILabelingService, NewsData
-import app.config as config
 
 
 class OpenAILabelingWorker(BaseLabelingWorker):
