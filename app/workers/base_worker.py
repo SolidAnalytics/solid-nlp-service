@@ -12,8 +12,6 @@ from .utils import get_error_message
 
 class BaseLabelingWorker:
     service_name: str = ""
-    queue_name: str = "worker_queue"
-    actor_name: str = "worker_parsing"
 
     def __init__(self):
         pass
@@ -59,6 +57,8 @@ class BaseLabelingWorker:
             )
             return
         
+        if "sentiment_data" not in input_data:
+            input_data["sentiment_data"] = {}
         input_data["sentiment_data"]["result"] = result.model_dump()
         result_broker = get_result_broker()
         send_result(result_broker, input_data)

@@ -29,23 +29,26 @@ async def get_worker() -> BaseLabelingWorker:
     return _WORKER
 
 
-@dramatiq.actor(queue_name=OpenAILabelingWorker.queue_name, actor_name=OpenAILabelingWorker.actor_name)
+@dramatiq.actor(queue_name=config.INPUT_RABBIT_QUEUE, actor_name=config.INPUT_RABBIT_ACTOR)
 async def run_task(input_data: dict[str, Any]) -> None:
     worker = await get_worker()
     await worker.process_request(input_data)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("count", type=int, help="the number of messages to enqueue")
-    args = parser.parse_args()
-    for _ in range(args.count):
-        res = run_task.send({
-            'post_data': {
-                'global_post_id': 1,
-                'post_text': 'test',
-                'entity': 'Сбербанк',
-                'genre_list': ['test']
-            }
-        })
-        print('Sending message:', res)
+    res = run_task.send({
+        'post_data': {
+            'global_post_id': 1,
+            'post_text': 'Брал недавно кредит в Сбербанке, очень доволен, все было очень быстро и просто',
+            'entity': 'Сбербанк',
+            'genre_list': ['статья', 'обзор', 'рекомендация', 'отзыв']
+        }
+    })
+    res = run_task.send({
+        'post_data': {
+            'global_post_id': 2,
+            'post_text': 'Заходил в офис сбера, хотел оформить карту, но там было очень долго, сотрудники были не очень вежливые и не подошли даже в течение 20 минут!!!',
+            'entity': 'Сбербанк',
+            'genre_list': ['статья', 'обзор', 'рекомендация', 'отзыв']
+        }
+    })

@@ -45,7 +45,7 @@ class OpenAILabelingService(LabelingService):
                 {"role": "system", "content": self.system_prompt},
                 {"role": "user", "content": prompt}
             ],
-            response_model=NewsAnalysisResponse
+            response_format=NewsAnalysisResponse
         )
         message = response.choices[0].message
 

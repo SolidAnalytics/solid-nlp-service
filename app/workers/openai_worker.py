@@ -6,8 +6,6 @@ import app.config as config
 
 class OpenAILabelingWorker(BaseLabelingWorker):
     service_name = "openai_news_labeling_worker"
-    queue_name = "labeling_worker_queue"
-    actor_name = "labeling_worker"
 
     def __init__(self, model_name: str, openai_api_key: str):
         super().__init__()
@@ -24,7 +22,6 @@ class OpenAILabelingWorker(BaseLabelingWorker):
             company_name=data.entity,
             genre_list=data.genre_list
         )
-
         labeled_news = await self.labeling_service.label(news_data)
 
         return LabelingResponse(
