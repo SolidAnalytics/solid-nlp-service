@@ -57,6 +57,10 @@ class BaseLabelingWorker:
             )
             return
         
+
+        if not result.is_entity_presented:
+            return
+
         if "sentiment_data" not in input_data:
             input_data["sentiment_data"] = {}
         input_data["sentiment_data"]["result"] = result.model_dump()
