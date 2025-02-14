@@ -8,4 +8,4 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-ENTRYPOINT ["./entrypoint.sh"]
+CMD ["dramatiq", "app.__main__"]
