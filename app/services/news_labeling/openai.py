@@ -1,7 +1,9 @@
 import openai
+import httpx
 from typing import Literal
 from pydantic import BaseModel, Field
 
+import app.config as config
 from .base import LabelingService, NewsData, LabeledNewsData
 
 
@@ -27,7 +29,10 @@ class OpenAILabelingService(LabelingService):
     ):
         self.model_name = model_name
         self.openai_api_key = openai_api_key
-        self.client = openai.AsyncOpenAI(api_key=self.openai_api_key)
+        self.client = openai.AsyncOpenAI(
+            api_key=self.openai_api_key,
+            http_client=httpx.AsyncClient(proxy=config.OPENAI_PROXY)
+        )
 
     async def label(self, news_data: NewsData) -> LabeledNewsData:
         prompt = (
