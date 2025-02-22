@@ -61,8 +61,8 @@ class BaseLabelingWorker:
         if not result.is_entity_presented:
             return
 
-        if "sentiment_data" not in input_data:
-            input_data["sentiment_data"] = {}
-        input_data["sentiment_data"]["result"] = result.model_dump()
+        data = {
+            "sentiment_data": result.model_dump(),
+        }
         result_broker = get_result_broker()
-        send_result(result_broker, input_data)
+        send_result(result_broker, data)

@@ -7,6 +7,7 @@ load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 OPENAI_MODEL_NAME = os.getenv("OPENAI_MODEL_NAME")
+OPENAI_PROXY = os.getenv("OPENAI_PROXY", None)
 
 INPUT_RABBIT_URL = os.getenv("INPUT_RABBIT_URL")
 INPUT_RABBIT_QUEUE = os.getenv("INPUT_RABBIT_QUEUE")
